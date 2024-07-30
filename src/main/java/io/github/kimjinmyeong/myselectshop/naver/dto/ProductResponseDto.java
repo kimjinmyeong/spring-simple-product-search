@@ -1,8 +1,12 @@
 package io.github.kimjinmyeong.myselectshop.naver.dto;
 
 import io.github.kimjinmyeong.myselectshop.naver.entity.Product;
+import io.github.kimjinmyeong.myselectshop.naver.entity.ProductFolder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Getter
 @NoArgsConstructor
@@ -20,6 +24,8 @@ public class ProductResponseDto {
 
     private int myprice;
 
+    private List<FolderResponseDto> productFolderList = new ArrayList<>();
+
     public ProductResponseDto(Product product) {
         this.id = product.getId();
         this.title = product.getTitle();
@@ -27,6 +33,9 @@ public class ProductResponseDto {
         this.image = product.getImage();
         this.lprice = product.getLprice();
         this.myprice = product.getMyprice();
+        for (ProductFolder productFolder : product.getProductFolderList()) {
+            productFolderList.add(new FolderResponseDto(productFolder.getFolder()));
+        }
     }
 
 }
