@@ -101,4 +101,19 @@ public class ProductService {
         productFolderRepository.save(new ProductFolder(product, folder));
 
     }
+
+    @Transactional(readOnly = true)
+    public Page<ProductResponseDto> getProductsInFolder(Long folderId, int page, int size, String sortBy, boolean isAsc, User user) {
+
+        Sort.Direction direction = isAsc ? Sort.Direction.ASC : Sort.Direction.DESC;
+        Sort sort = Sort.by(direction, sortBy);
+        Pageable pageable = PageRequest.of(page, size, sort);
+
+        Page<Product> products = productRepository.findAllByUserAndProductFolderList_FolderId(user, folderId, pageable);
+
+        Page<ProductResponseDto> responseDtoList = products.map(ProductResponseDto::new);
+
+        return responseDtoList;
+
+    }
 }
