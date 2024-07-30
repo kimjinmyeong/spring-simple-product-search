@@ -1,5 +1,6 @@
 package io.github.kimjinmyeong.myselectshop.naver.service;
 
+import io.github.kimjinmyeong.myselectshop.naver.dto.ItemDto;
 import io.github.kimjinmyeong.myselectshop.naver.dto.ProductMypriceRequestDto;
 import io.github.kimjinmyeong.myselectshop.naver.dto.ProductRequestDto;
 import io.github.kimjinmyeong.myselectshop.naver.dto.ProductResponseDto;
@@ -27,11 +28,11 @@ public class ProductService {
     public ProductResponseDto updateProduct(Long id, ProductMypriceRequestDto requestDto) {
         int myprice = requestDto.getMyprice();
         if (myprice < MIN_MY_PRICE) {
-            throw new IllegalArgumentException("유효하지 않은 관심 가격입니다. 최소 " + MIN_MY_PRICE + " 원 이상으로 설정해 주세요.");
+            throw new IllegalArgumentException("Invalid interest price. Please set it to at least " + MIN_MY_PRICE + " won.");
         }
 
         Product product = productRepository.findById(id).orElseThrow(() ->
-                new NullPointerException("해당 상품을 찾을 수 없습니다.")
+                new NullPointerException("Product not found.")
         );
 
         product.update(requestDto);
@@ -42,5 +43,13 @@ public class ProductService {
     public List<ProductResponseDto> getProducts() {
         List<Product> products = productRepository.findAll();
         return products.stream().map(ProductResponseDto::new).toList();
+    }
+
+    @Transactional
+    public void updateBySearch(Long id, ItemDto itemDto) {
+        Product product = productRepository.findById(id).orElseThrow(
+                () -> new NullPointerException("Product Not Found")
+        );
+        product.updateByItemDto(itemDto);
     }
 }
