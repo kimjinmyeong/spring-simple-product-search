@@ -1,5 +1,6 @@
 package io.github.kimjinmyeong.myselectshop.naver.entity;
 
+import io.github.kimjinmyeong.myselectshop.naver.dto.ItemDto;
 import io.github.kimjinmyeong.myselectshop.naver.dto.ProductMypriceRequestDto;
 import io.github.kimjinmyeong.myselectshop.naver.dto.ProductRequestDto;
 import jakarta.persistence.*;
@@ -44,4 +45,7 @@ public class Product extends Timestamped {
         this.myprice = requestDto.getMyprice();
     }
 
+    public void updateByItemDto(ItemDto itemDto) {
+        this.lprice = itemDto.getLprice();
+    }
 }
