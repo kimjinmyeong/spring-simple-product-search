@@ -1,6 +1,5 @@
 package io.github.kimjinmyeong.myselectshop.naver.dto;
 
-import io.github.kimjinmyeong.myselectshop.naver.entity.Folder;
 import io.github.kimjinmyeong.myselectshop.naver.entity.Product;
 import io.github.kimjinmyeong.myselectshop.naver.entity.ProductFolder;
 import lombok.Getter;
