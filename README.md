@@ -9,17 +9,17 @@ This project is a Spring Boot-based web application that uses RestTemplate to in
 ## Prerequisites
 
 * JDK 17
-* Spring Boot 3.3.2.
+* Spring Boot 3.3.2
 
 ## Dependencies
 
 * Spring Boot Starters: Includes spring-boot-starter-data-jpa, spring-boot-starter-security, spring-boot-starter-thymeleaf, spring-boot-starter-validation, and spring-boot-starter-web.
-* Thymeleaf Extras: thymeleaf-extras-springsecurity6 for integrating Spring Security with Thymeleaf.
-* Lombok: lombok for reducing boilerplate code.
-* MySQL Connector: mysql-connector-j for database connectivity.
-* JWT: jjwt-api, jjwt-impl, and jjwt-jackson for JSON Web Token functionality.
-* JSON: json for JSON parsing.
-* Testing: spring-boot-starter-test and spring-security-test for testing purposes.
+* Thymeleaf Extras
+* Lombok
+* MySQL Connector
+* JWT
+* JSON
+* Testing
 
 ## Configuration
 The application requires several configuration properties to be set up, including database credentials, Naver API credentials, and JWT secret keys. Below is an example of the necessary configuration in application.yml:
