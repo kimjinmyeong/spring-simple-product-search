@@ -6,7 +6,7 @@ A simple web application for product search built with Spring Boot and RestTempl
 
 This project is a Spring Boot-based web application that uses RestTemplate to interact with the Naver API for product search capabilities. It leverages various Spring Boot modules to offer a robust and secure application, including Spring Security, Spring Data JPA, and Thymeleaf.
 
-##Prerequisites
+## Prerequisites
 
 * JDK 17
 * Spring Boot 3.3.2.
